@@ -15,25 +15,33 @@ class ConverterViewController: UIViewController {
                       Converter(label: "miles to kilometers", inputUnit: "mi", outputUnit: "km"),
                       Converter(label: "kilometers to miles", inputUnit: "km", outputUnit: "mi")]
     
-    //var choosedConverter: Converter?
+    var choosedConverter: Converter?
     
     @IBOutlet weak var outputDisplay: UITextField!
     @IBOutlet weak var inputDisplay: UITextField!
     
     @IBAction func converterTap(_ sender: AnyObject) {
-        let alert = UIAlertController(title: "123", message: "choose converter", preferredStyle: UIAlertControllerStyle.actionSheet)
-        alert.addAction(UIAlertAction(title: "fahrenheit to celcius", style: UIAlertActionStyle.default, handler: nil //{ (AlertAction) in
-            //self.choosedConverter = self.converters[0]}
-        ))
-        alert.addAction(UIAlertAction(title: "celcius to fahrenheit", style: UIAlertActionStyle.default, handler: nil//{ (AlertAction) in
-            //self.choosedConverter = self.converters[1]}
-        ))
-        alert.addAction(UIAlertAction(title: "miles to kilometers", style: UIAlertActionStyle.default, handler: nil//{ (AlertAction) in
-            //self.choosedConverter = self.converters[2]}
-        ))
-        alert.addAction(UIAlertAction(title: "miles to kilometers", style: UIAlertActionStyle.default, handler: nil//{ (AlertActiom) in
-            //self.choosedConverter = self.converters[3]}
-        ))
+        let alert = UIAlertController(title: "", message: "choose converter", preferredStyle: UIAlertControllerStyle.actionSheet)
+        alert.addAction(UIAlertAction(title: "fahrenheit to celcius", style: UIAlertActionStyle.default, handler: { (AlertAction) in
+            self.choosedConverter = self.converters[0]
+            self.inputDisplay.text = "°F"
+            self.outputDisplay.text = "°C"
+        }))
+        alert.addAction(UIAlertAction(title: "celcius to fahrenheit", style: UIAlertActionStyle.default, handler: { (AlertAction) in
+            self.choosedConverter = self.converters[1]
+            self.inputDisplay.text = "°C"
+            self.outputDisplay.text = "°F"
+        }))
+        alert.addAction(UIAlertAction(title: "miles to kilometers", style: UIAlertActionStyle.default, handler: { (AlertAction) in
+            self.choosedConverter = self.converters[2]
+            self.inputDisplay.text = "ml"
+            self.outputDisplay.text = "km"
+        }))
+        alert.addAction(UIAlertAction(title: "miles to kilometers", style: UIAlertActionStyle.default, handler: { (AlertActiom) in
+            self.choosedConverter = self.converters[3]
+            self.inputDisplay.text = "km"
+            self.outputDisplay.text = "ml"
+        }))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -41,8 +49,8 @@ class ConverterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //choosedConverter = converters[0]
-        outputDisplay.text = "12344"
-        inputDisplay.text = "123"
+        inputDisplay.text = "°F"
+        outputDisplay.text = "°C"
         // Do any additional setup after loading the view.
     }
 
